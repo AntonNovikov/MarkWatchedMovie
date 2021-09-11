@@ -1,59 +1,7 @@
-// fetch("https://api.themoviedb.org/3/tv/1418?api_key=a8b943da8269eafbc1c6a4522c91dffb")
-//     .then((response) => response.json())
-//     .then((responseData) => {
-//         console.log(responseData)
-
-//         citiesStatesCopy.push(...responseData);
-
-
-//         console.log(citiesStatesCopy)
-
-//         // for (resp of citiesStatesCopy[0].areas) {
-//         //   for (city of resp.areas) {
-//         //     allCities.push({ city: city.name, state: resp.name });
-//         //   }
-//         // }
-//     });
-
-
-// по айди
-
-// fetch("https://api.themoviedb.org/3/movie/460465?api_key=a8b943da8269eafbc1c6a4522c91dffb&language=en-US")
-//     .then((response) => response.json())
-//     .then((responseData) => {
-
-
-
-//         console.log(responseData)
-//         console.log(responseData.vote_average)
-
-//         // https://image.tmdb.org/t/p/original//nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg
-//         console.log(responseData.poster_path)
-
-
-
-
-//         // for (resp of citiesStatesCopy[0].areas) {
-//         //   for (city of resp.areas) {
-//         //     allCities.push({ city: city.name, state: resp.name });
-//         //   }
-//         // }
-//     });
-
-// популярные по страницам
-
-// https://api.themoviedb.org/3/movie/popular?api_key=a8b943da8269eafbc1c6a4522c91dffb&page=2
-
-fetch(" https://api.themoviedb.org/3/movie/popular?api_key=a8b943da8269eafbc1c6a4522c91dffb&page=1")
-    .then((response) => response.json())
-    .then((responseData) => {
-        // console.log(responseData)
-        // console.log(responseData.vote_average)
-        // // https://image.tmdb.org/t/p/original//nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg
-        // console.log(responseData.poster_path)
-        showMovies(responseData)
-    });
 const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=a8b943da8269eafbc1c6a4522c91dffb&query="
+const form = document.querySelector("form");
+const search = document.querySelector(".header-search");
+
 
 const genreList = [{
         id: 28,
@@ -134,6 +82,21 @@ const genreList = [{
 
 ]
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const apiSearchUrl = `${API_URL}${search.value}`;
+    if (search.value !== "") {
+        getMovies(apiSearchUrl)
+    }
+
+    document.querySelector('.searchF').textContent = `Results for: ${search.value}`;
+    search.value = '';
+
+
+})
+
+getMovies("https://api.themoviedb.org/3/movie/popular?api_key=a8b943da8269eafbc1c6a4522c91dffb&page=1")
+
 function getClass(a) {
     if (a >= 7) {
         return "green"
@@ -174,24 +137,12 @@ function showMovies(data) {
     });
 }
 
-const form = document.querySelector("form");
-const search = document.querySelector(".header-search");
-
-form.addEventListener('submit',(e) =>{
-    e.preventDefault();
-    const apiSearchUrl = `${API_URL}${search.value}`;
-    if(search.value !==""){
-        getMovies(apiSearchUrl)
-    }
-})
-
 function getMovies(url){
     fetch(url)
     .then((response) => response.json())
     .then((responseData) => {
         console.log(responseData)
         showMovies(responseData)
-document.querySelector('.searchF').textContent = `Results for: ${search.value}`;
-search.value = '';
+
     });
 }

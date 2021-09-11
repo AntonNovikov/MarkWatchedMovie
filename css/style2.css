@@ -122,3 +122,43 @@ body {
 .searchF {
     color: white;
 }
+
+@media (max-width:768px) {
+    .header-logo {
+        font-size: 20px;
+        text-decoration: none;
+        color: #ffffff;
+    }
+}
+
+@media (max-width:480px) {
+    .header-logo {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .searchF {
+        font-size: 8px;
+        color: white;
+    }
+}
+
+@media (max-width:320px) {
+    .header-logo {
+        font-size: 10px;
+        text-decoration: none;
+        color: #ffffff;
+    }
+    .searchF {
+        font-size: 8px;
+        color: white;
+    }
+    .header-search {
+        height: 20px;
+        width: 50px;
+        padding: 3px;
+        border: 2px solid #1a191f;
+        border-radius: 5px;
+        outline: none;
+    }
+}

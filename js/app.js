@@ -47,10 +47,10 @@
 fetch(" https://api.themoviedb.org/3/movie/popular?api_key=a8b943da8269eafbc1c6a4522c91dffb&page=1")
     .then((response) => response.json())
     .then((responseData) => {
-        console.log(responseData)
-            // console.log(responseData.vote_average)
-            // // https://image.tmdb.org/t/p/original//nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg
-            // console.log(responseData.poster_path)
+        // console.log(responseData)
+        // console.log(responseData.vote_average)
+        // // https://image.tmdb.org/t/p/original//nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg
+        // console.log(responseData.poster_path)
         showMovies(responseData)
     });
 const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=a8b943da8269eafbc1c6a4522c91dffb&query="
